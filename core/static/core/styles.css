@@ -1,0 +1,195 @@
+:root {
+  --bg: #f6f7f8;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --card: #ffffff;
+  --primary: #2563eb;
+  --shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header strong {
+  font-size: 1rem;
+  letter-spacing: 0.2px;
+}
+
+nav a, nav span {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+nav span {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.card {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(229,231,235,0.6);
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.button, button.button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.55rem 1.05rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.button.secondary {
+  background: var(--border);
+  color: var(--text);
+}
+
+.button:hover, button.button:hover {
+  filter: brightness(0.95);
+}
+
+/* Forms */
+form input, form select, form textarea {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 0.3rem;
+  margin-bottom: 0.9rem;
+  font-size: 1rem;
+}
+
+form label {
+  font-weight: 600;
+}
+
+/* Nice focus for accessibility */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 3px solid rgba(37, 99, 235, 0.25);
+  outline-offset: 2px;
+}
+/* =========================
+   Identity cards (dashboard)
+   ========================= */
+
+.identities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.identity-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem 1.25rem 1rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Top row: info (left) + avatar (right) */
+.identity-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.identity-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.identity-right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  margin-left: auto;
+}
+
+.identity-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  transform: translateX(-8px);
+}
+
+.identity-title {
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.identity-meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.identity-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.identity-actions .button {
+  padding: 0.4rem 0.7rem;
+  font-size: 0.85rem;
+}
+
+/* Dashboard card header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.card-header h1,
+.card-header h2 {
+  margin: 0;
+}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div>
+<h2>Register</h2>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Register</button>
+  <button type="button" class="btn-back" onclick="history.length > 1 ? history.back() : window.location.href='{% url 'accounts:login' %}'"> Back</button>
+</form>
+</div>
+{% endblock %}

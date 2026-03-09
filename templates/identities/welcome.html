@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h1>Your Identities</h1>
+    <a href="{% url 'identities:identity_add' %}" class="button">
+      + Add identity
+    </a>
+  </div>
+  {% if identities %}
+  <div class="identities-grid">
+   {% for i in identities %}
+   <div class="identity-card">
+
+    <div class="identity-row">
+    <div class="identity-info">
+      <div class="identity-title">
+        {{ i.nickname|default:i.email|default:"Unnamed" }}
+      </div>
+
+    <div class="identity-meta">
+      Context: {{ i.get_context_domain_display }}<br>
+      Service: {{ i.website_or_game }}<br>
+      Name: {{ i.first_name }} {{ i.last_name }}<br>
+      Email: {{ i.email }}
+      </div>
+  </div>
+    <div class="identity-right">
+      {% if i.avatar_url %}
+        <img
+          src="{{ i.avatar_url }}"
+          alt="avatar"
+          class="identity-avatar">
+      {% endif %}
+    </div>
+  </div>
+  <div class="identity-actions">
+    <a href="{% url 'identities:identity_edit' i.id %}" class="button secondary">
+      Edit
+    </a>
+    <a href="{% url 'identities:identity_delete' i.id %}" class="button secondary">
+       Delete
+    </a>
+    <form method="post" action="{% url 'identities:toggle_api_visibility' i.id %}">
+    {% csrf_token %}
+      <button type="submit" class="button">
+        {% if i.is_visible_in_api %}Hide in API{% else %}Show in API{% endif %}
+      </button>
+    </form>
+  </div>
+
+  </div>
+  {% endfor %}
+    </div>
+  {% else %}
+    <p>No identities yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>{% block title %}Identity Management{% endblock %}</title>
+
+  <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+
+<body>
+
+  <!-- Global header / navigation -->
+  <header>
+    <strong>Identities and Profiles Manager</strong>
+
+    <nav>
+      {% if user.is_authenticated %}
+        <span>{{ user.username }}</span>
+        <a href="{% url 'identities:welcome' %}">Dashboard</a>
+        <a href="{% url 'accounts:logout' %}">Logout</a>
+      {% else %}
+        <a href="{% url 'accounts:login' %}">Sign in</a>
+        <a href="{% url 'accounts:register' %}">Register</a>
+      {% endif %}
+
+      <a href="/oauth/get-token/">Get Token</a>
+    </nav>
+  </header>
+
+  <!-- Main page content -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Optional footer -->
+  {% block footer %}
+  {% endblock %}
+
+</body>
+</html>

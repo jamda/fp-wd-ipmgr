@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Identity{% endblock %}
+
+{% block content %}
+<div>
+
+<h1>Edit Identity</h1>
+
+<p>Editing: <strong>{{ identity.nickname|default:identity.email }}</strong></p>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save changes</button>
+</form>
+
+<p><a href="{% url 'identities:welcome' %}">Back to dashboard</a></p>
+</div>
+{% endblock %}

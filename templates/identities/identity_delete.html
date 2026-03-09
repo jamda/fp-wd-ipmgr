@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Identity{% endblock %}
+
+{% block content %}
+<div>
+<h1>Delete Identity</h1>
+
+<p>Are you sure you want to delete:</p>
+
+<p>
+    <strong>{{ identity.nickname|default:identity.email }}</strong><br>
+    ({{ identity.website_or_game }})
+</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+</form>
+
+<p><a href="{% url 'identities:welcome' %}">Cancel</a></p>
+</div>
+{% endblock %}

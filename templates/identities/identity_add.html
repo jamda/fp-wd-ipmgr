@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div>
+    <h2>Add Identity</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Identity</button>
+    </form>
+</div>
+
+<div>
+   <a href="{% url 'accounts:logout' %}">Logout</a>
+</div>
+
+</div>
+{% endblock %}
