@@ -169,7 +169,7 @@ Then create an application manually if your project supports it.
 Example request:
 
 ```bash
-curl -X POST http://127.0.0.1:8000/o/token/ \
+curl -X POST http://127.0.0.1:8000/oauth/get-token/ \
   -d "grant_type=password" \
   -d "username=your_username" \
   -d "password=your_password" \
